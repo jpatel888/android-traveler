@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 
 
-class ADB:
+class ADBInteractor:
     def __init__(self):
         self.restart_cmd = "adb -s {{device}} shell am start -S com.infonow.bofa.test/.Launcher"
         self.screen_cap_commands = [
@@ -26,12 +26,11 @@ class ADB:
         print("Starting App")
         _ = os.popen(self.restart_cmd.replace("{{device}}", device_name)).read()
 
-    def in_app(self):
-        pass
-
     def press_back_button(self):
-        print("  Sending back code")
         os.system("adb shell input keyevent 4")
 
     def kill_app_and_restart(self):
+        pass
+
+    def in_app(self):
         pass

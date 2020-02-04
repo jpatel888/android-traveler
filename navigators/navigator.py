@@ -1,5 +1,5 @@
 from collections import defaultdict
-from adb import ADB
+from adb.adb_interactor import ADBInteractor
 import os
 import time
 
@@ -12,7 +12,7 @@ class Navigator:
         self.package_name = package_name
         self.last_activity_name = None
         self.visited_map = defaultdict(lambda: None)
-        self.adb = ADB()
+        self.adb = ADBInteractor()
 
     def press_back_until_in_app(self, device_serial):
         seconds_between = 0.5

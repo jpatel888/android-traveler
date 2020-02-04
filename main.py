@@ -1,7 +1,7 @@
 import sys
 import os
 import time
-from navigator_list import Navigator
+from navigators.navigator import Navigator
 import datetime
 
 
@@ -26,10 +26,10 @@ Example Command:
 
 ./septaNav --minutes 2 --activitydepth 3
 
-
 """
 
-
+print(sys.argv)
+exit()
 minutes = 4
 print("Running septaNav for", minutes, "minutes with an activity depth of 3")
 starttime = datetime.datetime.now()
