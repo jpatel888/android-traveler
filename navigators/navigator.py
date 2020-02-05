@@ -124,7 +124,6 @@ class Navigator:
         return False
 
     def take_screenshot(self, activity_name):
-        #print("  Taking Screenshot")
         self.adb.take_screenshot(activity_name)
 
     def restart_app(self):

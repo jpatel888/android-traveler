@@ -1,3 +1,22 @@
 {
-  "package_name": ""
+  "arguments": [
+    {
+      "name": "--minutes",
+      "help": "Time Limit (if one is necessary) for running navigation",
+      "default": "inf",
+      "required": false
+    },
+    {
+      "name": "--activity-depth",
+      "help": "Depth of the activities to traverse\n",
+      "default": "inf",
+      "required": false
+    },
+    {
+      "name": "--package-start-name",
+      "help": "Time Limit (if one is necessary) for running navigation",
+      "default": "",
+      "required": true
+    }
+  ]
 }

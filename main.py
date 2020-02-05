@@ -1,8 +1,10 @@
 import sys
 import os
 import time
-from navigators.navigator import Navigator
 import datetime
+from navigators.navigator import Navigator
+from utils.args import Args
+from utils.utils import get_constants
 
 
 try:
@@ -20,22 +22,7 @@ except:
 from com.dtmilano.android.viewclient import ViewClient
 
 
-"""
-
-Example Command:
-
-./septaNav --minutes 2 --activitydepth 3
-
-"""
-
-print(sys.argv)
-exit()
-minutes = 4
-print("Running septaNav for", minutes, "minutes with an activity depth of 3")
-starttime = datetime.datetime.now()
-endtime = starttime + datetime.timedelta(minutes=minutes)
-
-def run_navigator(vc, navigator):
+def run_navigator(vc, navigator, endtime):
     while datetime.datetime.now() < endtime:
         try:
             current_package = Navigator.get_top_package_name()
@@ -54,6 +41,13 @@ def run_navigator(vc, navigator):
 
 
 if __name__ == '__main__':
+    constants, _ = get_constants()
+    args = Args(constants)
+    minutes = args.get_minutes()
+    activity_depth = args.get_activity_depth()
+    launch_name = args.get_app_name()
     vc = ViewClient(*ViewClient.connectToDeviceOrExit(verbose=True))
     navigator = Navigator(vc, "bofa")
+    starttime = datetime.datetime.now()
+    endtime = starttime + datetime.timedelta(minutes=minutes)
     run_navigator(vc, navigator)
